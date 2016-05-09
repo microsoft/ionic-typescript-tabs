@@ -1,0 +1,15 @@
+{
+  "name": "ionic-ts-tabs",
+  "version": false,
+  "dependencies": {},
+  "ambientDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160412133217",
+    "cordova": "registry:dt/cordova#0.0.0+20160316155526",
+    "cordova-ionic": "registry:dt/cordova-ionic#0.0.0+20160316155526",
+    "cordova-ionic/plugins/keyboard": "registry:dt/cordova-ionic/plugins/keyboard#0.0.0+20160317120654",
+    "cordova/plugins/statusbar": "registry:dt/cordova/plugins/statusbar#0.0.0+20160316155526",
+    "ionic": "registry:dt/ionic#0.0.0+20160501155303",
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160412134757"
+  }
+}
