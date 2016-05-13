@@ -12,10 +12,10 @@ To learn more about Tools for Apache Cordova, visit this [link](https://taco.vis
 
 ## Requirements
 1. node.js
-2. Cordova and Ionic - [sudo] npm install -g cordova ionic
-3. TypeScript - [sudo] npm install -g typescript
-4. Gulp - [sudo] npm install -g gulp
-5. Bower - [sudo] npm install -g bower
+2. Cordova and Ionic - npm install -g cordova ionic
+3. TypeScript - npm install -g typescript
+4. Gulp - npm install -g gulp
+5. Bower - npm install -g bower
 
 ## Getting Started
 
@@ -27,11 +27,17 @@ With VS Code:
 * Deploy to device or emulator by running `ionic run <platform name>` or `ionic emulate <platform name>`
 * Success
 
+** Note: To improve your Cordova development workflow, install [VS Code Cordova extension](https://marketplace.visualstudio.com/items?itemName=vsmobile.cordova-tools). 
+* Launch the VS Code Command Palette – (Ctrl+Shift+P on Windows, Cmd+Shift+P on Mac) – and type the following command and hit Enter: 
+> ext install cordova-tools
+
+
 With Visual Studio:
 * Clone this repository.
 * Open the ionic-typescript-tabs.sln in Visual Studio.
+* Open Task Runner window by pressing Ctrl+Alt+Bkspce. 
 * Install npm packages by going to your Solution Explorer -> Dependencies -> npm and clicking on 'Restore Packages'. 
-* Once packages are restored, build the project and deploy it on an android emulator. 
+* Once packages are restored, build the project and deploy it on it on Ripple or an android emulator. 
 * Success
 
 

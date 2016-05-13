@@ -1,7 +1,7 @@
 ﻿(function () {
-    // Append the safeHTML polyfill
+    // Append the bind() polyfill
     var scriptElem = document.createElement('script');
-    scriptElem.setAttribute('src', 'scripts/winstore-jscompat.js');
+    scriptElem.setAttribute('src', 'js/android2.3-jscompat.js');
     if (document.body) {
         document.body.appendChild(scriptElem);
     } else {
