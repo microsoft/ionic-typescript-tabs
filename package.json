@@ -15,6 +15,7 @@
     "typings": "^1.0.4"
   },
   "scripts": {
+    "build": "node_modules/.bin/gulp",
     "bower": "node_modules/.bin/bower install",
     "typings": "node_modules/.bin/typings install",
     "postinstall": "npm run typings && npm run bower && npm run build"
