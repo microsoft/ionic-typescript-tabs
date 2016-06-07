@@ -1,4 +1,4 @@
-/// <reference path="../typings/browser.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 module Services {
   export interface IChatsService {
     all(): Array<IChatUser>;

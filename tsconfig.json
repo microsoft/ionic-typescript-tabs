@@ -8,8 +8,6 @@
   },  
       "exclude": [
         "node_modules", 
-        "typings/main",
-        "typings/main.d.ts",
         "www/lib",
         "platforms",
         "bld",
