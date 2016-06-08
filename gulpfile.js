@@ -8,6 +8,8 @@ var paths = {
     tsc: ['./app/**/*.ts']
 };
 
+gulp.task('serve:before', ['watch']);
+
 gulp.task('default', ['sass','tsc']);
 
 gulp.task('sass', function (done) {

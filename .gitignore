@@ -9,8 +9,10 @@ plugins/
 .vs/
 typings/
 www/lib/
-www/css/
-www/js/
+www/css/*
+!www/css/style.css
+www/js/*
+!www/js/platformOverrides.js
 
 bld/
 bin/
