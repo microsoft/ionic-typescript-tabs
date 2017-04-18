@@ -1,22 +1,22 @@
 /// <reference path="../typings/index.d.ts" />
 module Services {
-  export interface IChatsService {
-    all(): Array<IChatUser>;
-    remove(chat: IChatUser);
+  export interface IWeightsService {
+    all(): Array<IWeightUser>;
+    remove(weight: IWeightUser);
     get(chatId: string);
   }
 
-  export interface IChatUser {
+  export interface IWeightUser {
     id: Number;
     name: String;
     lastText: String;
     face: String;
   }
 
-  export class Chats implements IChatsService {
-    chats: Array<IChatUser>;
+  export class Weights implements IWeightsService {
+    weights: Array<IWeightUser>;
     constructor() {
-      this.chats = [{
+      this.weights = [{
         id: 0,
         name: 'Ben Sparrow',
         lastText: 'You on your way?',
@@ -44,15 +44,15 @@ module Services {
         }];
     }
     all() {
-      return this.chats;
+      return this.weights;
     };
-    remove(chat) {
-      this.chats.splice(this.chats.indexOf(chat), 1);
+    remove(weights) {
+      this.weights.splice(this.chats.indexOf(weight), 1);
     };
     get(chatId) {
-      for (var i = 0; i < this.chats.length; i++) {
-        if (this.chats[i].id === parseInt(chatId)) {
-          return this.chats[i];
+      for (var i = 0; i < this.weights.length; i++) {
+        if (this.weights[i].id === parseInt(weightId)) {
+          return this.weights[i];
         }
       }
       return null;
@@ -62,4 +62,4 @@ module Services {
 
 angular.module('starter.services', [])
 
-  .service('Chats', Services.Chats);
+  .service('Weights', Services.Weights);

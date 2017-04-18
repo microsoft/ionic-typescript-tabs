@@ -5,16 +5,16 @@ class DashCtrl {
   constructor() { }
 }
 
-class ChatsCtrl {
-  public $inject = ['Chats'];
-  chats: any[];
+class WeightsCtrl {
+  public $inject = ['Weights'];
+  weights: any[];
   constructor(
-    public Chats: Services.IChatsService
+    public Weights: Services.IWeightsService
     ) {
-    this.chats = Chats.all();
+    this.weights = Weights.all();
   }
-  remove(chat) {
-    this.Chats.remove(chat);
+  remove(weight) {
+    this.Weights.remove(weight);
   };
 }
 
@@ -26,14 +26,14 @@ class ChatDetailCtrl {
   public $inject = ['Chats', '$stateParams'];
   chat: Object;
   constructor(
-    public Chats: Services.IChatsService,
+    public Chats: Services.IWeightsService,
     public $stateParams: IStateParams
     ) {
     this.chat = Chats.get($stateParams.chatId);
   }
 }
 
-class AccountCtrl {
+class SettingsCtrl {
   settings: Object;
   constructor() {
     this.settings = {
@@ -44,6 +44,6 @@ class AccountCtrl {
 
 angular.module('starter.controllers', [])
   .controller('DashCtrl', DashCtrl)
-  .controller('ChatsCtrl', ChatsCtrl)
+  .controller('WeightsCtrl', WeightsCtrl)
   .controller('ChatDetailCtrl', ChatDetailCtrl)
-  .controller('AccountCtrl', AccountCtrl);
+  .controller('AccountCtrl', SettingsCtrl);
