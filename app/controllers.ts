@@ -19,17 +19,17 @@ class WeightsCtrl {
 }
 
 interface IStateParams extends ng.ui.IStateParamsService {
-  chatId: string;
+  weightId: string;
 }
 
-class ChatDetailCtrl {
-  public $inject = ['Chats', '$stateParams'];
-  chat: Object;
+class WeightDetailCtrl {
+  public $inject = ['Weights', '$stateParams'];
+  weight: Object;
   constructor(
-    public Chats: Services.IWeightsService,
+    public Weights: Services.IWeightsService,
     public $stateParams: IStateParams
     ) {
-    this.chat = Chats.get($stateParams.chatId);
+    this.weight = Weights.get($stateParams.weightId);
   }
 }
 
@@ -45,5 +45,5 @@ class SettingsCtrl {
 angular.module('starter.controllers', [])
   .controller('DashCtrl', DashCtrl)
   .controller('WeightsCtrl', WeightsCtrl)
-  .controller('ChatDetailCtrl', ChatDetailCtrl)
+  .controller('WeightDetailCtrl', WeightDetailCtrl)
   .controller('AccountCtrl', SettingsCtrl);

@@ -1,7 +1,7 @@
-<ion-view view-title="Weights">
+<ion-view view-title="Weight Details">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="weight in Weights.weights" type="item-text-wrap" href="#/tab/weights/{{weight.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="weight in weights.weights" type="item-text-wrap" href="#/tab/weights/{{weight.id}}">
         <img ng-src="{{weight.face}}">
         <h2>{{weight.name}}</h2>
         <p>{{weight.lastText}}</p>

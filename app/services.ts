@@ -46,10 +46,10 @@ module Services {
     all() {
       return this.weights;
     };
-    remove(weights) {
-      this.weights.splice(this.chats.indexOf(weight), 1);
+    remove(weight) {
+      this.weights.splice(this.weights.indexOf(weight), 1);
     };
-    get(chatId) {
+    get(weightId) {
       for (var i = 0; i < this.weights.length; i++) {
         if (this.weights[i].id === parseInt(weightId)) {
           return this.weights[i];
