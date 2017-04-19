@@ -6,23 +6,44 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+    .run(['$rootScope', '$log', '$ionicPlatform', function ($rootScope, $log, $ionicPlatform) {    
+        $ionicPlatform.ready(function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
+        });
 
-.run(function($ionicPlatform: ionic.platform.IonicPlatformService) {
-  $ionicPlatform.ready(() => {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (cordova.platformId === 'ios' && window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      window.StatusBar.styleLightContent();
-    }
-  });
-})
-
+        // Debug stuff...
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            $log.debug('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
+        });
+        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+            $log.debug('$stateChangeError - fired when an error occurs during transition.');
+            $log.debug(arguments);
+        });
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            $log.debug('$stateChangeSuccess to ' + toState.name + '- fired once the state transition is complete.');
+        });
+        // $rootScope.$on('$viewContentLoading',function(event, viewConfig){
+        //   // runs on individual scopes, so putting it in "run" doesn't work.
+        //   $log.debug('$viewContentLoading - view begins loading - dom not rendered',viewConfig);
+        // });
+        $rootScope.$on('$viewContentLoaded', function (event) {
+            $log.debug('$viewContentLoaded - fired after dom rendered', event);
+        });
+        $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
+            $log.debug('$stateNotFound ' + unfoundState.to + '  - fired when a state cannot be found by its name.');
+            $log.debug(unfoundState, fromState, fromParams);
+        });
+  }])
+  
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -40,36 +61,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl as dash'
+        controller: 'DashCtrl as Dash'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.weights', {
+      url: '/weights',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl as chats'
-        }
+        'tab-weights': {
+          templateUrl: 'templates/tab-weights.html',
+          controller: 'WeightsCtrl as Weights'
+        },
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.weight-detail', {
+      
+      url: '/weights/:weightId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl as chat'
+        'tab-weights': {
+          templateUrl: 'templates/detail.html',
+          controller: 'WeightDetailCtrl as Detail'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.settings', {
+    url: '/settings',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl as account'
+      'tab-settings': {
+        templateUrl: 'templates/tab-settings.html',
+        controller: 'SettingsCtrl as Settings'
       }
     }
   });

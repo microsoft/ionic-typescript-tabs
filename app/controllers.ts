@@ -5,45 +5,43 @@ class DashCtrl {
   constructor() { }
 }
 
-class ChatsCtrl {
-  public $inject = ['Chats'];
-  chats: any[];
+class WeightsCtrl {
+  public $inject = ['Weights'];
+  weights: any[];
   constructor(
-    public Chats: Services.IChatsService
-    ) {
-    this.chats = Chats.all();
+    public Weights: Services.IWeightsService
+  ) {
+    this.weights = Weights.all();
   }
-  remove(chat) {
-    this.Chats.remove(chat);
+  remove(weight) {
+    this.Weights.remove(weight);
   };
 }
 
 interface IStateParams extends ng.ui.IStateParamsService {
-  chatId: string;
+  weightId: string;
 }
 
-class ChatDetailCtrl {
-  public $inject = ['Chats', '$stateParams'];
-  chat: Object;
+class WeightDetailCtrl {
+  public $inject = ['Weights', '$stateParams'];
+  weight: Object;
   constructor(
-    public Chats: Services.IChatsService,
+    public Weights: Services.IWeightsService,
     public $stateParams: IStateParams
-    ) {
-    this.chat = Chats.get($stateParams.chatId);
+  ) {
+    this.weight = Weights.get($stateParams.weightId);
   }
 }
 
-class AccountCtrl {
+class SettingsCtrl {
   settings: Object;
-  constructor() {
-    this.settings = {
-      enableFriends: true
-    };
+  constructor(public Settings: Services.IUserSettings) {
+    this.settings = Settings;
   }
 }
 
 angular.module('starter.controllers', [])
   .controller('DashCtrl', DashCtrl)
-  .controller('ChatsCtrl', ChatsCtrl)
-  .controller('ChatDetailCtrl', ChatDetailCtrl)
-  .controller('AccountCtrl', AccountCtrl);
+  .controller('WeightsCtrl', WeightsCtrl)
+  .controller('WeightDetailCtrl', WeightDetailCtrl)
+  .controller('SettingsCtrl', SettingsCtrl);

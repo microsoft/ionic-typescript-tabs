@@ -1,0 +1,19 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ion-list>
+      <ion-label color="primary">Rest Time Between Exercises (s)</ion-label>
+
+  <input [(ngModel)]="Settings.settings.restPerExercise" value="{{Settings.settings.restPerExercise}}"> 
+   <ion-label color="primary">Rest Time Between Sets (s)</ion-label>
+     <input [(ngModel)]="Settings.settings.restPerSet" value="{{Settings.settings.restPerSet}}"> 
+          <ion-list>
+            <ion-list-header>
+              Available Weights
+            </ion-list-header>
+            <ion-item ng-repeat="weight in Settings.settings.availableWeights">
+              <ion-label>{{weight.weight}}</ion-label>
+              <ion-checkbox ng-checked="{{weight.enabled}}"></ion-checkbox>
+          </ion-list>
+    </ion-list>
+       </ion-content>
+</ion-view>

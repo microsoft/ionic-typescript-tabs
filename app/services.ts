@@ -1,22 +1,70 @@
 /// <reference path="../typings/index.d.ts" />
 module Services {
-  export interface IChatsService {
-    all(): Array<IChatUser>;
-    remove(chat: IChatUser);
+  export interface IWeightsService {
+    all(): Array<IWeightUser>;
+    remove(weight: IWeightUser);
     get(chatId: string);
   }
 
-  export interface IChatUser {
+  export interface IWeightUser {
     id: Number;
     name: String;
     lastText: String;
     face: String;
   }
 
-  export class Chats implements IChatsService {
-    chats: Array<IChatUser>;
+  export interface IExercise {
+    id: Number;
+    name: String;
+    workingWeight: Number;
+    warmupWeight: Number;
+    workingSets: Number;
+    warmupSets: Number;
+    maxWeight: Number;
+    reps: Number;
+  }
+
+  export interface ISession {
+    id: Number;
+    date: Date;
+    exercises: Array<IExercise>;
+  }
+
+  export interface IUserSettings {
+    restPerExercise: Number;
+    restPerSet: Number;
+    availableWeights: Array<WeightValue>;
+  }
+
+
+  export class WeightValue {
+    constructor(public weight: Number, public enabled: Boolean) {
+      this.weight = weight;
+      this.enabled = enabled;
+    }
+}  
+  export class UserSettings implements IUserSettings {
+     restPerExercise: 180;
+      restPerSet: 90;
+       
+    availableWeights: Array<WeightValue>
+      constructor() {
+        this.availableWeights = [];
+        this.restPerExercise = 180;
+        this.restPerSet = 90;
+        let defaultWeightValues = [2.5, 5, 10, 15, 25, 35, 45];        
+
+        for (let val in defaultWeightValues) {
+          this.availableWeights.push(new WeightValue(defaultWeightValues[val], true));
+        }        
+
+     }
+  }
+
+  export class Weights implements IWeightsService {
+    weights: Array<IWeightUser>;
     constructor() {
-      this.chats = [{
+      this.weights = [{
         id: 0,
         name: 'Ben Sparrow',
         lastText: 'You on your way?',
@@ -44,15 +92,16 @@ module Services {
         }];
     }
     all() {
-      return this.chats;
+      console.log(this.weights);
+      return this.weights;
     };
-    remove(chat) {
-      this.chats.splice(this.chats.indexOf(chat), 1);
+    remove(weight) {
+      this.weights.splice(this.weights.indexOf(weight), 1);
     };
-    get(chatId) {
-      for (var i = 0; i < this.chats.length; i++) {
-        if (this.chats[i].id === parseInt(chatId)) {
-          return this.chats[i];
+    get(weightId) {
+      for (var i = 0; i < this.weights.length; i++) {
+        if (this.weights[i].id === parseInt(weightId)) {
+          return this.weights[i];
         }
       }
       return null;
@@ -61,5 +110,5 @@ module Services {
 }
 
 angular.module('starter.services', [])
-
-  .service('Chats', Services.Chats);
+  .service('Settings', Services.UserSettings)
+  .service('Weights', Services.Weights);
