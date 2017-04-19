@@ -1,9 +1,18 @@
 <ion-view view-title="Settings">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="Settings.settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+      <ion-label color="primary">Rest Time Per Exercise (s)</ion-label>
+      <ion-input type="text" ngModel="Settings.settings.restPerExercise" >
+        <ion-label color="primary">Rest Time Per Set (s)</ion-label>
+        <ion-input type="number" ng-model="Settings.settings.restPerSet">
+          <ion-list>
+            <ion-list-header>
+              Available Weights
+            </ion-list-header>
+            <ion-item ng-repeat="weight in Settings.settings.availableWeights">
+              <ion-label>{{weight.weight}}</ion-label>
+              <ion-checkbox ng-checked="{{weight.enabled}}"></ion-checkbox>
+          </ion-list>
     </ion-list>
   </ion-content>
 </ion-view>

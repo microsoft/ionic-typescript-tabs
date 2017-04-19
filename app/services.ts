@@ -13,6 +13,54 @@ module Services {
     face: String;
   }
 
+  export interface IExercise {
+    id: Number;
+    name: String;
+    workingWeight: Number;
+    warmupWeight: Number;
+    workingSets: Number;
+    warmupSets: Number;
+    maxWeight: Number;
+    reps: Number;
+  }
+
+  export interface ISession {
+    id: Number;
+    date: Date;
+    exercises: Array<IExercise>;
+  }
+
+  export interface IUserSettings {
+    restPerExercise: Number;
+    restPerSet: Number;
+    availableWeights: Array<WeightValue>;
+  }
+
+
+  export class WeightValue {
+    constructor(public weight: Number, public enabled: Boolean) {
+      this.weight = weight;
+      this.enabled = enabled;
+    }
+}  
+  export class UserSettings implements IUserSettings {
+     restPerExercise: 180;
+      restPerSet: 90;
+       
+    availableWeights: Array<WeightValue>
+      constructor() {
+        this.availableWeights = [];
+        this.restPerExercise = 180;
+        this.restPerSet = 90;
+        let defaultWeightValues = [2.5, 5, 10, 15, 25, 35, 45];        
+
+        for (let val in defaultWeightValues) {
+          this.availableWeights.push(new WeightValue(defaultWeightValues[val], true));
+        }        
+
+     }
+  }
+
   export class Weights implements IWeightsService {
     weights: Array<IWeightUser>;
     constructor() {
@@ -62,5 +110,5 @@ module Services {
 }
 
 angular.module('starter.services', [])
-
+  .service('Settings', Services.UserSettings)
   .service('Weights', Services.Weights);

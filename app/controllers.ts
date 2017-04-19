@@ -10,7 +10,7 @@ class WeightsCtrl {
   weights: any[];
   constructor(
     public Weights: Services.IWeightsService
-    ) {
+  ) {
     this.weights = Weights.all();
   }
   remove(weight) {
@@ -28,17 +28,15 @@ class WeightDetailCtrl {
   constructor(
     public Weights: Services.IWeightsService,
     public $stateParams: IStateParams
-    ) {
+  ) {
     this.weight = Weights.get($stateParams.weightId);
   }
 }
 
 class SettingsCtrl {
   settings: Object;
-  constructor() {
-    this.settings = {
-      enableFriends: true
-    };
+  constructor(public Settings: Services.IUserSettings) {
+    this.settings = Settings;
   }
 }
 
