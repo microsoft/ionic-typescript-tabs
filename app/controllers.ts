@@ -46,4 +46,4 @@ angular.module('starter.controllers', [])
   .controller('DashCtrl', DashCtrl)
   .controller('WeightsCtrl', WeightsCtrl)
   .controller('WeightDetailCtrl', WeightDetailCtrl)
-  .controller('AccountCtrl', SettingsCtrl);
+  .controller('SettingsCtrl', SettingsCtrl);

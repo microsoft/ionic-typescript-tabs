@@ -44,6 +44,7 @@ module Services {
         }];
     }
     all() {
+      console.log(this.weights);
       return this.weights;
     };
     remove(weight) {
